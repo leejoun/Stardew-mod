@@ -1,0 +1,12 @@
+{
+    "Name": "WSF",
+    "Author": "leejohnkt11",
+    "Version": "1.0.0",
+    "Description": "ljy给wsf的生日礼物",
+    "UniqueID": "leejohnkt11.WSF",
+    "EntryDll": "WSF.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": [
+        "GitHub:leejohnkt11/WSF"
+    ]
+}
