@@ -43,11 +43,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\28785\\Desktop\\wsf\\wsf.csproj",
+      "projectUniqueName": "C:\\Users\\28785\\Desktop\\Stardew-mod\\wsf\\wsf.csproj",
       "projectName": "wsf",
-      "projectPath": "C:\\Users\\28785\\Desktop\\wsf\\wsf.csproj",
+      "projectPath": "C:\\Users\\28785\\Desktop\\Stardew-mod\\wsf\\wsf.csproj",
       "packagesPath": "C:\\Users\\28785\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\28785\\Desktop\\wsf\\obj\\",
+      "outputPath": "C:\\Users\\28785\\Desktop\\Stardew-mod\\wsf\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\28785\\AppData\\Roaming\\NuGet\\NuGet.Config"
