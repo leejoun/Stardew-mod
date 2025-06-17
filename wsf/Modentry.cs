@@ -9,7 +9,7 @@ public class Modentry : Mod
 {
     public override void Entry(IModHelper helper)
     {
-        Monitor.Log("Initializing Custom Ring Mod", LogLevel.Debug);
+        Monitor.Log("wsf的专属mod已加载...(呵呵一般)", LogLevel.Debug);
         
         // 注册自定义戒指
         CustomRing.Register(helper, this.Monitor);
@@ -18,7 +18,7 @@ public class Modentry : Mod
         helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
     }
 
-    private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e)
     {
         bool hasRing = false;
         foreach (var item in Game1.player.Items)
@@ -33,7 +33,7 @@ public class Modentry : Mod
         if (!hasRing)
         {
             Game1.player.addItemToInventory(new CustomRing());
-            Monitor.Log("Auto-given custom ring to player", LogLevel.Info);
+            Monitor.Log("2092应当收到了戒指。", LogLevel.Info);
         }
     }
 }

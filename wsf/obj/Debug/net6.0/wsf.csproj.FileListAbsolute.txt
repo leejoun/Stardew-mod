@@ -6,3 +6,12 @@ C:\Users\28785\Desktop\wsf\obj\Debug\net6.0\wsf.AssemblyInfoInputs.cache
 C:\Users\28785\Desktop\wsf\obj\Debug\net6.0\wsf.AssemblyInfo.cs
 C:\Users\28785\Desktop\wsf\obj\Debug\net6.0\wsf.csproj.CoreCompileInputs.cache
 C:\Users\28785\Desktop\wsf\obj\Debug\net6.0\wsf.dll
+C:\Users\28785\Desktop\Stardew-mod\wsf\bin\Debug\net6.0\wsf.deps.json
+C:\Users\28785\Desktop\Stardew-mod\wsf\bin\Debug\net6.0\wsf.dll
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.csproj.AssemblyReference.cache
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.AssemblyInfoInputs.cache
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.AssemblyInfo.cs
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.csproj.CoreCompileInputs.cache
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.sourcelink.json
+C:\Users\28785\Desktop\Stardew-mod\wsf\obj\Debug\net6.0\wsf.dll

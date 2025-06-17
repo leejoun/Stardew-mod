@@ -15,19 +15,19 @@ namespace wsf
     {
         public static readonly string RingId = "jounalee.WSF/CustomRing";
         private static string ringId = "517"; // 使用游戏内已有的紫水晶戒指ID作为基础
-        private static IModHelper _helper;
-        private static IMonitor _monitor;
+        private static IModHelper? _helper;
+        private static IMonitor? _monitor;
         
         // 保存原始外观状态
-        private Hat originalHat;
-        private string originalShirt;
-        private string originalPants;
+        private Hat? originalHat;
+        private Clothing? originalShirt;
+        private Clothing? originalPants;
         private Color originalHairColor;
         
         public CustomRing() : base(ringId)
         {
             // 直接设置基础描述字段
-            this.description = _helper?.Translation.Get("customRing.description") ?? "这是一枚特别的戒指，专为王思帆制作。";
+            this.description = _helper?.Translation.Get("customRing.description") ?? "这是一枚特别的戒指，专为口嗨姐制作。";
             // 确保名称也设置
             this.displayName = _helper?.Translation.Get("customRing.name") ?? "专门给王思帆的戒指";
         }
@@ -37,7 +37,7 @@ namespace wsf
         public override string getDescription()
         {
             // 强制返回自定义描述，不调用基类方法
-            return _helper?.Translation.Get("customRing.description") ?? "这是一枚特别的戒指，专为王思帆制作。";
+            return _helper?.Translation.Get("customRing.description") ?? "这是一枚特别的戒指，专为口嗨姐制作。";
         }
         
         protected override void initNetFields()
@@ -68,11 +68,16 @@ namespace wsf
         public override void onUnequip(Farmer who)
         {
             base.onUnequip(who);
-            Game1.addHUDMessage(new HUDMessage("难受，好宝摘戒指了...", 3));
+            Game1.addHUDMessage(new HUDMessage("摘戒指了嘛你这家伙...", 3));
             // 恢复原始外观
             who.hat.Value = originalHat;
-            who.changeShirt(originalShirt);
-            who.pantsItem.Value = new Clothing(originalPants);
+            if (originalShirt != null) {
+                who.changeShirt(originalShirt.ItemId);
+            }
+            if (originalPants != null) {
+                who.pantsItem.Value = originalPants;
+                who.changeGender(who.IsMale); // 强制刷新外观
+            }
             who.hairstyleColor.Value = originalHairColor;
             who.changeGender(who.IsMale);  // 强制刷新角色外观
             
@@ -88,8 +93,8 @@ namespace wsf
 
             // 保存原始外观
             originalHat = who.hat.Value;
-            originalShirt = who.shirtItem.Value?.ItemId;
-            originalPants = who.pantsItem.Value?.ItemId;
+            originalShirt = who.shirtItem.Value;
+            originalPants = who.pantsItem.Value;
             originalHairColor = who.hairstyleColor.Value;
 
             // 换上婚纱
@@ -107,7 +112,7 @@ namespace wsf
             helper.Events.Content.AssetRequested += OnAssetRequested;
         }
 
-        private static void OnAssetRequested(object sender, AssetRequestedEventArgs e)
+        private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e)
         {
             if (e.NameWithoutLocale.IsEquivalentTo("TileSheets/rings"))
             {
@@ -117,15 +122,18 @@ namespace wsf
                     try 
                     {
                         // 加载自定义戒指图标
-                        var ringTexture = _helper.ModContent.Load<Texture2D>("assets/ring_icon.png");
-                        // 缩放1024x1024贴图到16x16区域
-                        editor.PatchImage(ringTexture, targetArea: new Rectangle(0, 0, 16, 16), 
-                            sourceArea: new Rectangle(0, 0, 1024, 1024));
-                        _monitor.Log("成功加载并应用自定义戒指贴图", LogLevel.Info);
+                        if (_helper != null)
+                        {
+                            var ringTexture = _helper.ModContent.Load<Texture2D>("assets/ring_icon.png");
+                            // 缩放1024x1024贴图到16x16区域
+                            editor.PatchImage(ringTexture, targetArea: new Rectangle(0, 0, 16, 16), 
+                                sourceArea: new Rectangle(0, 0, 1024, 1024));
+                            _monitor?.Log("成功加载并应用自定义戒指贴图", LogLevel.Info);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        _monitor.Log($"加载戒指贴图失败: {ex.Message}", LogLevel.Error);
+                        _monitor?.Log($"加载戒指贴图失败: {ex.Message}", LogLevel.Error);
                     }
                 });
             }
