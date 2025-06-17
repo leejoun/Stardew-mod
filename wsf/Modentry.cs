@@ -14,6 +14,9 @@ public class Modentry : Mod
         // 注册自定义戒指
         CustomRing.Register(helper, this.Monitor);
         
+        // 初始化NPC对话模块
+        NPCChatModule.Initialize(helper, this.Monitor);
+        
         // 在存档加载时自动给予戒指
         helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
     }
