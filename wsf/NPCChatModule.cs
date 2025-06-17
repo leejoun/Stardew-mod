@@ -15,17 +15,17 @@ namespace wsf
 {
     public class ApiResponse
     {
-        public List<Choice> choices { get; set; }
+        public List<Choice>? choices { get; set; }
     }
 
     public class Choice
     {
-        public Message message { get; set; }
+        public Message? message { get; set; }
     }
 
     public class Message
     {
-        public string content { get; set; }
+        public string? content { get; set; }
     }
 
     public class NPCChatModule
@@ -74,7 +74,16 @@ namespace wsf
                         if (!string.IsNullOrEmpty(msg))
                         {
                             string response = await GetAIResponse("Shane", msg);
-                            Game1.drawObjectDialogue(response);
+                            NPC shane = Game1.getCharacterFromName("Shane");
+                            if (shane != null)
+                            {
+                                shane.CurrentDialogue.Push(new Dialogue(shane, null, response));
+                                Game1.drawDialogue(shane);
+                            }
+                            else
+                            {
+                                Game1.drawObjectDialogue(response);
+                            }
                         }
                     }
                 );
