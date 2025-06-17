@@ -5,25 +5,32 @@
 这是由 `Leejohn` 开发的一个星露谷游戏模组,突发奇想开发了这样一个带有礼物性质的mod❤️
 
 ![1749458824252](image/README/1749458824252.png)
-****
+
+---
+
 ## 使用方法
 
- + 从[N网官网](https://www.nexusmods.com/)搜索 `wsf's_mod` 或者 `id：34663`;
- + 常规 `Manual` 下载,配置 `Mods` 文件夹;
- + 正常加载存档之后，会自动给予戒指💍：’
-  
++ 从[N网官网](https://www.nexusmods.com/)搜索 `wsf's_mod` 或者 `id：34663`;
++ 常规 `Manual` 下载,配置 `Mods` 文件夹;
++ 正常加载存档之后，会自动给予戒指💍：’
+
 ![1749459258166](image/README/1749459258166.png)
 
- + 带上**戒指（魔改的辉石戒指）**以后会有自动换装和亮表情特效 (不在此展示了)；
++ 带上戒指（魔改的辉石戒指）以后会有自动换装和亮表情特效 (不在此展示了)；
++ 在游戏中的任何位置按`"U"`键，可以调用和谢恩的远程交流(使用Deepseek)；
+  
+![1750172349297](image/README/1750172349297.png)
+---
 
-****
 ### 开发记录
 
 #### 环境选择
+
 + 本来对于 `.NET` 项目想基于 `VS` 开发但是最后还是选择本地配置 `.NET SDK` 结合 `vscode` 来开发（调试，该参数更方便）
 + 需要 `vscode .NET Install Tool` 扩展。
 + 核心是 `Modentry.cs` 文件继承 `Mod` 类：
- ```c++
+
+```c++
       using StardewModdingAPI;
       using StardewModdingAPI.Events;
       using StardewValley;
@@ -51,7 +58,7 @@
                       break;
                   }
               }
-              
+            
               if (!hasRing)
               {
                   Game1.player.addItemToInventory(new CustomRing());
@@ -59,8 +66,10 @@
               }
           }
       }
- ```
- + 在 `CustomRing.cs` 中可以个性化修改戒指事件，在注册戒指分配及穿戴事件之后可以自定义修改消息文本和动作以及表情内容  
+```
+
++ 在 `CustomRing.cs` 中可以个性化修改戒指事件，在注册戒指分配及穿戴事件之后可以自定义修改消息文本和动作以及表情内容
+
 ```c++
 public override void onEquip(Farmer who)
         {
@@ -68,7 +77,7 @@ public override void onEquip(Farmer who)
             Game1.addHUDMessage(new HUDMessage("text", 1));
             _monitor?.Log($"{who.Name} text!", LogLevel.Info);
             who.animateOnce(id); 
-            
+          
             originalHat = who.hat.Value;
             originalShirt = who.shirtItem.Value?.ItemId;
             originalPants = who.pantsItem.Value?.ItemId;
@@ -82,7 +91,8 @@ public override void onEquip(Farmer who)
         }
 ```
 
-****
+---
+
 ### 结语
 
 作者和女朋友在星露谷度过了一段极其难忘的时光，齐先生也许见证了我的喜欢和内心的悸动👀，这是她和作者在一起的第一个生日，某天晚上突然有了这样一个想法，遂放手去做，既是对过去自己的喜欢的奖励也是对未来恋爱的激励，正所谓继往开来嘛🤩。
